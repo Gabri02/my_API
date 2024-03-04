@@ -1,6 +1,6 @@
 const express = require("express");
 const userRoutes = require("./appModules/usersRoutes");
-const goalsIntervalsRoutes = require("goalsIntervalsRoutes");
+const goalsIntervalsRoutes = require("./appModules/intervalsRoutes");
 
 const app = express();
 const port = 3000;
