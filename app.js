@@ -1,6 +1,7 @@
 const express = require("express");
 const userRoutes = require("./appModules/usersRoutes");
-const goalsIntervalsRoutes = require("./appModules/intervalsRoutes");
+const intervalsRoutes = require("./appModules/intervalsRoutes");
+const goalsRoutes = require("./appModules/goalsRoutes");
 
 const app = express();
 const port = 3000;
@@ -8,7 +9,8 @@ const port = 3000;
 app.use(express.json());
 
 app.use("/users", userRoutes);
-app.use("/intervals", goalsIntervalsRoutes);
+app.use("/intervals", intervalsRoutes);
+app.use("/goals", goalsRoutes);
 
 app.get("/", async (req, res) => {
   res.send("Welcome!");
