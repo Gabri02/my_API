@@ -1,5 +1,5 @@
 const express = require("express");
-const moment = require('moment');
+const moment = require("moment");
 const query = require("./db");
 
 const router = express.Router();
@@ -10,10 +10,22 @@ const getIntervalsWithGoals = async (queryString, queryParams) => {
   const intervalMap = new Map();
 
   intervals.forEach((interval) => {
-    const { interval_id, start_date, end_date, goal_id, goal_name, ...intervalInfo } = interval;
+    const {
+      interval_id,
+      start_date,
+      end_date,
+      goal_id,
+      goal_name,
+      ...intervalInfo
+    } = interval;
 
     if (!intervalMap.has(interval_id)) {
-      intervalMap.set(interval_id, { ...intervalInfo, start_date: moment(start_date).format('YYYY-MM-DD'), end_date: moment(end_date).format('YYYY-MM-DD'), goals: [] });
+      intervalMap.set(interval_id, {
+        ...intervalInfo,
+        start_date: moment(start_date).format("YYYY-MM-DD"),
+        end_date: moment(end_date).format("YYYY-MM-DD"),
+        goals: [],
+      });
     }
 
     if (goal_id) {
@@ -62,7 +74,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-
 router.get("/:id", async (req, res, next) => {
   try {
     const intervalId = req.params.id;
@@ -98,7 +109,11 @@ router.post("/", async (req, res, next) => {
       INSERT INTO intervals (start_date, end_date, user_id)
       VALUES (?, ?, ?);
     `;
-    const result = await query(insertIntervalQuery, [start_date, end_date, user_id]);
+    const result = await query(insertIntervalQuery, [
+      start_date,
+      end_date,
+      user_id,
+    ]);
     const intervalId = result.insertId;
 
     if (goalsIds && goalsIds.length > 0) {
@@ -172,6 +187,37 @@ router.delete("/:id", async (req, res, next) => {
     const intervalId = req.params.id;
     await query("DELETE FROM intervals WHERE id = ?", [intervalId]);
     res.status(204).json({ message: "Interval deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/:interval_id/goals", async (req, res, next) => {
+  try {
+    const intervalId = req.params.interval_id;
+    const { goal_id } = req.body;
+
+    const intervalExists = await query(
+      "SELECT id FROM intervals WHERE id = ?",
+      [intervalId]
+    );
+    if (intervalExists.length === 0) {
+      return res.status(404).json({ message: "Interval not found" });
+    }
+
+    const goalExists = await query("SELECT id FROM goals WHERE id = ?", [
+      goal_id,
+    ]);
+    if (goalExists.length === 0) {
+      return res.status(404).json({ message: "Goal not found" });
+    }
+
+    await query(
+      "INSERT INTO interval_goals (interval_id, goal_id) VALUES (?, ?)",
+      [intervalId, goal_id]
+    );
+
+    res.status(201).json({ message: "Goal assigned to interval successfully" });
   } catch (error) {
     next(error);
   }
