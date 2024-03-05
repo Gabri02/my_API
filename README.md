@@ -1,6 +1,6 @@
 # My API
 
-This is a simple API project that I created for demonstration purposes. The API allows users to perform basic CRUD (Create, Read, Update, Delete) operations on a fictional database of books.
+This is a simple API project that I created for demonstration purposes. The API allows users to perform basic CRUD (Create, Read, Update, Delete) operations on a fictional database of intervals goals.
 
 ## Installation
 
@@ -30,30 +30,28 @@ This will start the server on `http://localhost:3000`.
 
 The following endpoints are available:
 
-- `GET /books`: Get all books
-- `GET /books/:id`: Get a book by ID
-- `POST /books`: Add a new book
-- `PUT /books/:id`: Update a book by ID
-- `DELETE /books/:id`: Delete a book by ID
+- `GET /users`: Get all users
+- `GET /users/:id`: Get a user by ID
+- `POST /users`: Add a new user
+- `PUT /users/:id`: Update a user by ID
+- `PATCH /users/:id`: Update a user by ID
+- `DELETE /users/:id`: Delete a user by ID
 
-All endpoints except `GET /books` require authentication using JWT (JSON Web Tokens). You can obtain a JWT by sending a POST request to `/auth/login` with the following JSON payload:
-
+``` json
 {
-"username": "your_username",
-"password": "your_password"
+"email": "your_email",
+"first_name": "your_name",
+"last_name": "your_surname"
 }
+```
 
-
-Replace `your_username` and `your_password` with your desired credentials.
+Replace `your_email`, `your_name` and `your_surname` with your desired credentials.
 
 ### Example
 
-To get all books, you can send a GET request to `http://localhost:3000/books`. If you want to add a new book, you can send a POST request to `http://localhost:3000/books` with a JSON payload containing the book details.
+To get all books, you can send a GET request to `http://localhost:3000/users`. If you want to add a new book, you can send a POST request to `http://localhost:3000/users` with a JSON payload containing the book details.
 
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request if you find any bugs or have suggestions for improvements.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
