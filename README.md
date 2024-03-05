@@ -11,16 +11,16 @@ This project is a web API application for managing goals to be achieved within c
 ## Installation
 
 1. Clone the repository:
-   ``` bash
+   ``` 
     git clone https://github.com/Gabri02/my_API.git
    ```
 2. Make sure you have npm installed. If not, you can download it [here](https://www.npmjs.com/package/npm).
 3. Install dependencies using npm:
-  ```  bash
+  ```  
     npm install
   ```
 4. Start the server:
-   ``` bash
+   ``` 
     node app.js
    ```
 
@@ -34,7 +34,7 @@ This project is a web API application for managing goals to be achieved within c
 
 User POST request:
 
-``` javascript
+``` 
 POST /users HTTP/1.1
 Host: your-api-domain.com
 Content-Type: application/json
@@ -47,14 +47,40 @@ Content-Type: application/json
 ```
 Users GET request:
 
-``` javascript
+``` 
 GET /users HTTP/1.1
 Host: your-api-domain.com
 ```
+
 Users GET by id:
 
-``` javascript
+``` 
 GET /users/1 HTTP/1.1
+Host: your-api-domain.com
+```
+Interval POST request:
+
+```
+POST /intervals HTTP/1.1
+Host: your-api-domain.com
+Content-Type: application/json
+
+{
+  "start_date": "2024-03-05",
+  "end_date": "2024-03-10",
+  "user_id": "1"
+}
+```
+
+Interval GET request:
+```
+GET /intervals HTTP/1.1
+Host: your-api-domain.com
+```
+
+Interval GET by id request:
+```
+GET /intervals/1 HTTP/1.1
 Host: your-api-domain.com
 ```
 
