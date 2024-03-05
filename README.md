@@ -33,6 +33,7 @@ This project is a web API application for managing goals to be achieved within c
 ## API Examples
 
 User POST request:
+
 ``` javascript
 POST /users HTTP/1.1
 Host: your-api-domain.com
@@ -43,6 +44,18 @@ Content-Type: application/json
   "first_name": "John",
   "last_name": "Doe"
 }
+```
+Users GET request:
+
+``` javascript
+GET /users HTTP/1.1
+Host: your-api-domain.com
+```
+Users GET by id:
+
+``` javascript
+GET /users/1 HTTP/1.1
+Host: your-api-domain.com
 ```
 
 ## Contributing
