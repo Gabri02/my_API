@@ -1,69 +1,46 @@
 # MeditActive API
-MeditActive is a platform designed to help users focus on a set of predefined goals aimed at improving their lifestyle. The task is to develop a set of JSON RESTful APIs to implement this functionality within their app. No front-end development is required for this project.
 
-## Requirements:
-All APIs must adhere to the REST architecture, including naming conventions, methods, and response status codes.
-APIs must allow for the insertion, modification, and deletion of a user with the following characteristics: email, first name, and last name.
-APIs must allow for the insertion, modification, and deletion of a goal interval with the following characteristics: start date, end date, and associated user.
-APIs must allow for the association of a goal with an interval.
-APIs must allow for the retrieval of all intervals, filtering by included goals, and filtering by start and end dates.
-You can use either MySQL or MongoDB to store your information. If you choose MySQL, remember to include a migrations.sql file to rebuild your database structure.
-If you use MySQL, ensure that all database queries are sanitized and not vulnerable to SQL injection attacks. Therefore, the use of prepared statements is required to prevent this type of attack.
-Remember that MongoDB can also be susceptible to NoSQL injection attacks, so take appropriate precautions.
-## Implementation:
-## User APIs:
-POST /user: Creates a new user with email, first name, and last name.
-PUT /user/{user_id}: Updates user information.
-DELETE /user/{user_id}: Deletes a user.
-Goal Interval APIs:
-POST /interval: Creates a new goal interval with start date, end date, and associated user.
-PUT /interval/{interval_id}: Updates goal interval information.
-DELETE /interval/{interval_id}: Deletes a goal interval.
-Goal Association APIs:
-POST /interval/{interval_id}/goal: Associates a goal with a specific interval.
-Retrieval and Filtering APIs:
-GET /intervals: Retrieves all intervals.
-GET /intervals?goal={goal_id}: Retrieves intervals filtered by included goals.
-GET /intervals?start_date={start_date}&end_date={end_date}: Retrieves intervals filtered by start and end dates.
-Database Structure (MySQL Example):
-sql
-Copy code
-CREATE TABLE users (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL
-);
+MeditActive aims to help users focus on a set of predefined goals to improve their lifestyle.
 
-CREATE TABLE intervals (
-    interval_id INT AUTO_INCREMENT PRIMARY KEY,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+Your task is to create JSON RESTful APIs to implement this functionality within their app. There is no need to develop a front end for this project.
 
-CREATE TABLE goals (
-    goal_id INT AUTO_INCREMENT PRIMARY KEY,
-    goal_name VARCHAR(255) NOT NULL
-);
+## Requirements
 
-CREATE TABLE interval_goals (
-    interval_id INT,
-    goal_id INT,
-    FOREIGN KEY (interval_id) REFERENCES intervals(interval_id),
-    FOREIGN KEY (goal_id) REFERENCES goals(goal_id),
-    PRIMARY KEY (interval_id, goal_id)
-);
-## Technologies Used:
-MySQL or MongoDB (Database)
-JSON
-Security Considerations:
-Ensure all user inputs are properly sanitized and validated to prevent injection attacks.
-Use prepared statements for MySQL queries to prevent SQL injection.
-Implement appropriate access controls and authentication mechanisms.
-## Contributing:
-Contributions to the project are welcome! Please open an issue first to discuss any changes you would like to make.
+- All APIs must follow the REST architecture, including naming conventions, methods, and response status codes.
+- APIs should allow for the insertion, modification, and deletion of a user with the following attributes: email, first name, and last name.
+- APIs should allow for the insertion, modification, and deletion of a goal interval with the following attributes: start date, end date, and user to whom the interval belongs.
+- APIs should allow for the association of a goal with an interval.
+- APIs should allow for the retrieval of all intervals, filtering by included goals, and filtering by start and end date.
 
-License:
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Implementation Details
+
+- You can use either MySQL or MongoDB to store your information. If you choose MySQL, remember to include a migrations.sql file to rebuild the structure of your database.
+- If you use MySQL, ensure that all database queries are sanitized and not vulnerable to SQL Injection attacks. Prepared statements must be used to prevent these types of attacks.
+- Remember that MongoDB can also be vulnerable to NoSQL Injection attacks. Take appropriate precautions.
+
+## API Endpoints
+
+1. **Users**
+   - `POST /users`: Create a new user.
+   - `GET /users/{user_id}`: Retrieve user information.
+   - `PUT /users/{user_id}`: Update user information.
+   - `DELETE /users/{user_id}`: Delete a user.
+
+2. **Goal Intervals**
+   - `POST /intervals`: Create a new goal interval.
+   - `GET /intervals/{interval_id}`: Retrieve interval information.
+   - `PUT /intervals/{interval_id}`: Update interval information.
+   - `DELETE /intervals/{interval_id}`: Delete an interval.
+
+3. **Associations**
+   - `POST /associations`: Associate a goal with an interval.
+
+4. **Queries**
+   - `GET /intervals`: Retrieve all intervals.
+   - `GET /intervals?goal={goal_id}`: Filter intervals by included goals.
+   - `GET /intervals?start_date={start_date}&end_date={end_date}`: Filter intervals by start and end date.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
