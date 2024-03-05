@@ -1,57 +1,43 @@
-# My API
+# Goal Management API
 
-This is a simple API project that I created for demonstration purposes. The API allows users to perform basic CRUD (Create, Read, Update, Delete) operations on a fictional database of intervals goals.
+This project is a web API application for managing goals to be achieved within certain time intervals. It allows users to add, modify, and delete a user, a time interval, as well as insert, modify, and assign goals to a specific interval and user.
+
+## Key Features
+
+- *User Management:* Add, edit, and delete users.
+- *Time Interval Management:* Insert and modify available time intervals.
+- *Goal Management:* Create, edit, and assign goals to specific intervals and users.
 
 ## Installation
 
-To use this API, you will need to have Node.js installed on your machine. You can download it from [here](https://nodejs.org/).
-
-After installing Node.js, you can clone this repository to your local machine using the following command:
-
-```
-git clone https://github.com/Gabri02/my_API.git
-```
-
-Once the repository is cloned, navigate to the project directory and install the dependencies by running:
-
-npm install
-
+1. Clone the repository:
+   ``` bash
+    git clone https://github.com/Gabri02/my_API.git
+    ```
+2. Make sure you have Python installed. If not, you can download it [here](https://www.python.org/downloads/).
+3. Install dependencies using pip:
+  ```  bash
+    pip install -r requirements.txt
+    ```
+4. Start the server:
+   ``` bash
+    python app.py
+    ```
 
 ## Usage
 
-To start the API server, run the following command:
+1. Access the API through the provided routes.
+2. Utilize the routes to manage users, time intervals, and goals as needed.
+3. Make HTTP requests to create, modify, or delete data.
 
-npm start
+## API Documentation
 
-
-This will start the server on `http://localhost:3000`.
-
-### Endpoints
-
-The following endpoints are available:
-
-- `GET /users`: Get all users
-- `GET /users/:id`: Get a user by ID
-- `POST /users`: Add a new user
-- `PUT /users/:id`: Update a user by ID
-- `PATCH /users/:id`: Update a user by ID
-- `DELETE /users/:id`: Delete a user by ID
-
-``` json
-{
-"email": "your_email",
-"first_name": "your_name",
-"last_name": "your_surname"
-}
-```
-
-Replace `your_email`, `your_name` and `your_surname` with your desired credentials.
-
-### Example
-
-To get all users, you can send a GET request to `http://localhost:3000/users`. If you want to add a new book, you can send a POST request to `http://localhost:3000/users` with a JSON payload containing the book details.
+For further details on using the routes and supported parameters, refer to the API documentation included in the docs directory.
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request if you find any bugs or have suggestions for improvements.
+If you find bugs or have suggestions to improve the project, feel free to open an issue or submit a pull request.
 
+## Authors
+
+- Gabri02
