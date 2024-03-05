@@ -30,9 +30,20 @@ This project is a web API application for managing goals to be achieved within c
 2. Utilize the routes to manage users, time intervals, and goals as needed.
 3. Make HTTP requests to create, modify, or delete data.
 
-## API Documentation
+## API Examples
 
-For further details on using the routes and supported parameters, refer to the API documentation included in the docs directory.
+User POST request:
+``` javascript
+POST /users HTTP/1.1
+Host: your-api-domain.com
+Content-Type: application/json
+
+{
+  "email": "example@example.com",
+  "first_name": "John",
+  "last_name": "Doe"
+}
+```
 
 ## Contributing
 
