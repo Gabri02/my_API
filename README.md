@@ -49,7 +49,7 @@ Replace `your_email`, `your_name` and `your_surname` with your desired credentia
 
 ### Example
 
-To get all books, you can send a GET request to `http://localhost:3000/users`. If you want to add a new book, you can send a POST request to `http://localhost:3000/users` with a JSON payload containing the book details.
+To get all users, you can send a GET request to `http://localhost:3000/users`. If you want to add a new book, you can send a POST request to `http://localhost:3000/users` with a JSON payload containing the book details.
 
 ## Contributing
 
