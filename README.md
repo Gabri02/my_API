@@ -84,6 +84,43 @@ GET /intervals/1 HTTP/1.1
 Host: your-api-domain.com
 ```
 
+Goals POST request:
+
+```
+POST /goals HTTP/1.1
+Host: your-api-domain.com
+Content-Type: application/json
+
+{
+  "goal_name": "Meditate for 20 minutes a day"
+}
+```
+
+Goals DELETE request:
+
+```
+DELETE /goals/:id HTTP/1.1
+Host: your-api-domain.com
+
+```
+
+Assign a goal to an interval:
+
+```
+POST /intervals/:interval_id/goals HTTP/1.1
+Host: your-api-domain.com
+Content-Type: application/json
+
+{
+  "goal_id": "1"
+}
+
+```
+
+## Database
+
+For use this API you need to execute the file migrations.sql to create the database structure.
+
 ## Contributing
 
 If you find bugs or have suggestions to improve the project, feel free to open an issue or submit a pull request.
