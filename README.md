@@ -1,45 +1,59 @@
-# MeditActive API
+# My API
 
-MeditActive aims to help users focus on a set of predefined goals to improve their lifestyle.
+This is a simple API project that I created for demonstration purposes. The API allows users to perform basic CRUD (Create, Read, Update, Delete) operations on a fictional database of books.
 
-Your task is to create JSON RESTful APIs to implement this functionality within their app. There is no need to develop a front end for this project.
+## Installation
 
-## Requirements
+To use this API, you will need to have Node.js installed on your machine. You can download it from [here](https://nodejs.org/).
 
-- All APIs must follow the REST architecture, including naming conventions, methods, and response status codes.
-- APIs should allow for the insertion, modification, and deletion of a user with the following attributes: email, first name, and last name.
-- APIs should allow for the insertion, modification, and deletion of a goal interval with the following attributes: start date, end date, and user to whom the interval belongs.
-- APIs should allow for the association of a goal with an interval.
-- APIs should allow for the retrieval of all intervals, filtering by included goals, and filtering by start and end date.
+After installing Node.js, you can clone this repository to your local machine using the following command:
 
-## Implementation Details
+```
+git clone https://github.com/Gabri02/my_API.git
+```
 
-- You can use either MySQL or MongoDB to store your information. If you choose MySQL, remember to include a migrations.sql file to rebuild the structure of your database.
-- If you use MySQL, ensure that all database queries are sanitized and not vulnerable to SQL Injection attacks. Prepared statements must be used to prevent these types of attacks.
-- Remember that MongoDB can also be vulnerable to NoSQL Injection attacks. Take appropriate precautions.
+Once the repository is cloned, navigate to the project directory and install the dependencies by running:
 
-## API Endpoints
+npm install
 
-1. **Users**
-   - `POST /users`: Create a new user.
-   - `GET /users/{user_id}`: Retrieve user information.
-   - `PUT /users/{user_id}`: Update user information.
-   - `DELETE /users/{user_id}`: Delete a user.
 
-2. **Goal Intervals**
-   - `POST /intervals`: Create a new goal interval.
-   - `GET /intervals/{interval_id}`: Retrieve interval information.
-   - `PUT /intervals/{interval_id}`: Update interval information.
-   - `DELETE /intervals/{interval_id}`: Delete an interval.
+## Usage
 
-3. **Associations**
-   - `POST /associations`: Associate a goal with an interval.
+To start the API server, run the following command:
 
-4. **Queries**
-   - `GET /intervals`: Retrieve all intervals.
-   - `GET /intervals?goal={goal_id}`: Filter intervals by included goals.
-   - `GET /intervals?start_date={start_date}&end_date={end_date}`: Filter intervals by start and end date.
+npm start
+
+
+This will start the server on `http://localhost:3000`.
+
+### Endpoints
+
+The following endpoints are available:
+
+- `GET /books`: Get all books
+- `GET /books/:id`: Get a book by ID
+- `POST /books`: Add a new book
+- `PUT /books/:id`: Update a book by ID
+- `DELETE /books/:id`: Delete a book by ID
+
+All endpoints except `GET /books` require authentication using JWT (JSON Web Tokens). You can obtain a JWT by sending a POST request to `/auth/login` with the following JSON payload:
+
+{
+"username": "your_username",
+"password": "your_password"
+}
+
+
+Replace `your_username` and `your_password` with your desired credentials.
+
+### Example
+
+To get all books, you can send a GET request to `http://localhost:3000/books`. If you want to add a new book, you can send a POST request to `http://localhost:3000/books` with a JSON payload containing the book details.
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Contributions are welcome! Feel free to open an issue or submit a pull request if you find any bugs or have suggestions for improvements.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
