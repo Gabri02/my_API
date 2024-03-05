@@ -13,16 +13,16 @@ This project is a web API application for managing goals to be achieved within c
 1. Clone the repository:
    ``` bash
     git clone https://github.com/Gabri02/my_API.git
-    ```
-2. Make sure you have Python installed. If not, you can download it [here](https://www.python.org/downloads/).
-3. Install dependencies using pip:
+   ```
+2. Make sure you have npm installed. If not, you can download it [here](https://www.npmjs.com/package/npm).
+3. Install dependencies using npm:
   ```  bash
-    pip install -r requirements.txt
-    ```
+    npm install
+  ```
 4. Start the server:
    ``` bash
-    python app.py
-    ```
+    node app.js
+   ```
 
 ## Usage
 
